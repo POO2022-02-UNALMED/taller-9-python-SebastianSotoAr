@@ -11,36 +11,36 @@ pantalla = Entry(root, width=22, bg="black", fg="white", borderwidth=0, font=("a
 pantalla.grid(row=0, column=0, columnspan=4, padx=1, pady=1)
 
 num = [0, 0, 0]
+ope = [""]
 
 def clicki(i):
-    if (num[0] == 0):
+    if (ope[0] == ""):
         num[0] = i
         
     else:
         num[1] = i
 
+        if (ope[0] == "+"):
+            num[2] = num[0] + num[1]
+
+        elif (ope[0] == "-"):
+            num[2] = num[0] - num[1]
+
+        elif (ope[0] == "*"):
+            num[2] = num[0] * num[1]
+
+        elif (ope[0] == "/"):
+            num[2] = num[0] / num[1]
+
 def clicko(i):
-    if (i == "+"):
-        print("sum")
-        num[2] = num[0] + num[1]
-
-    elif (i == "-"):
-        print("res")
-        num[2] = num[0] - num[1]
-
-    elif (i == "*"):
-        print("mul")
-        num[2] = num[0] * num[1]
-
-    elif (i == "/"):
-        print("div")
-        num[2] = num[0] / num[1]
+    ope[0] = i
 
 def clickf():
     print(num[2])
     num[2] = 0
     num[1] = 0
     num[0] = 0
+    ope[0] = ""
 
 # Configuración botones
 boton_1 = Button(root, text="1", width=9, height=3, bg="white", fg="red", borderwidth=0, cursor="hand2", command=lambda: clicki(1)).grid(row=1, column=0, padx=1, pady=1)
